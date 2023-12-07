@@ -61,7 +61,7 @@ def bam_parser(phased_variants, bam_f, sequence):
 			if debug_counter < 100:
 				print("[+] Considering a phased variant at position {}".format(position))
 			# get reads that overlap the phased SNP
-			for column in samfile.pileup(sequence, position-1, position, ignore_overlaps=False, truncate=True):
+			for column in samfile.pileup(sequence, position-1, position, ignore_overlaps=False, truncate=True, ignore_orphans=False):
 				#print(position)
 				for pileupread in column.pileups:
 					# don't process read if del at the phased variant
